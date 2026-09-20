@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistem Evaluasi Implikasi</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        nav {
+            background: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .menu a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #222;
+        }
+
+        .menu a:hover {
+            color: #d69e2e;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #222, #555);
+            color: white;
+            padding: 70px 8%;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+        }
+
+        .question {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 14px 25px;
+            background: #222;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        #hasil {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f1f1f1;
+        }
+
+        .hasil-benar {
+            border-left: 5px solid #2e8b57;
+        }
+
+        .hasil-salah {
+            border-left: 5px solid #c0392b;
+        }
+
+        .status {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .tabel {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .tabel th,
+        .tabel td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .tabel th {
+            background: #222;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #222;
+            color: white;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .menu a {
+                margin-left: 0;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">KISAH KITA</div>
+
+        <div class="menu">
+            <a href="index.html">Beranda</a>
+            <a href="index.html#cerita">Cerita</a>
+            <a href="evaluasi.html">Evaluasi</a>
+            <a href="index.html#solusi">Solusi</a>
+            <a href="index.html#kelompok">Kelompok</a>
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <h1>Sistem Evaluasi Implikasi</h1>
+
+        <p>
+            Evaluasi hubungan antara dua pernyataan berdasarkan konsep
+            logika matematika dan dikaitkan dengan cerita konflik
+            yang terdapat pada website ini.
+        </p>
+    </section>
+
+
+    <main class="container">
+
+        <div class="card">
+            <h2>🧠 Apa itu Implikasi?</h2>
+
+            <p>
+                Implikasi merupakan hubungan logika yang berbentuk
+                <strong>Jika P maka Q</strong>, yang ditulis:
+            </p>
+
+            <h2 style="margin-top:20px;">
+                P → Q
+            </h2>
+
+            <p style="margin-top:15px;">
+                Nilai implikasi bernilai salah hanya ketika P bernilai
+                benar tetapi Q bernilai salah.
+            </p>
+        </div>
+
+
+        <div class="card">
+
+            <h2>🔍 Evaluasi Pernyataan</h2>
+
+            <div class="question">
+
+                <label for="p">
+                    Pernyataan P
+                </label>
+
+                <select id="p">
+                    <option value="">-- Pilih nilai P --</option>
+                    <option value="true">
+                        Benar
+                    </option>
+                    <option value="false">
+                        Salah
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="question">
+
+                <label for="q">
+                    Pernyataan Q
+                </label>
+
+                <select id="q">
+                    <option value="">-- Pilih nilai Q --</option>
+                    <option value="true">
+                        Benar
+                    </option>
+                    <option value="false">
+                        Salah
+                    </option>
+                </select>
+
+            </div>
+
+
+            <button onclick="evaluasi()">
+                🔎 Evaluasi Sekarang
+            </button>
+
+
+            <div id="hasil">
+
+                <h2>Hasil Evaluasi</h2>
+
+                <div id="status" class="status"></div>
+
+                <p id="penjelasan"></p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📊 Tabel Kebenaran Implikasi</h2>
+
+            <table class="tabel">
+
+                <tr>
+                    <th>P</th>
+                    <th>Q</th>
+                    <th>P → Q</th>
+                </tr>
+
+                <tr>
+                    <td>Benar</td>
+                    <td>Benar</td>
+                    <td>Benar</td>
+                </tr>
+
+                <tr>
+                    <td>Benar</td>
+                    <td>Salah</td>
+                    <td>Salah</td>
+                </tr>
+
+                <tr>
+                    <td>Salah</td>
+                    <td>Benar</td>
+                    <td>Benar</td>
+                </tr>
+
+                <tr>
+                    <td>Salah</td>
+                    <td>Salah</td>
+                    <td>Benar</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📖 Contoh dari Cerita</h2>
+
+            <p>
+                <strong>P:</strong> Informasi yang beredar di masyarakat
+                telah terbukti benar.
+            </p>
+
+            <br>
+
+            <p>
+                <strong>Q:</strong> Masyarakat mengambil tindakan
+                berdasarkan informasi tersebut.
+            </p>
+
+            <br>
+
+            <p>
+                Bentuk implikasinya:
+                <strong>Jika informasi benar, maka masyarakat
+                mengambil tindakan.</strong>
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        Website Tugas Kelompok — Kisah di Balik Konflik
+    </footer>
+
+
+    <script>
+
+        function evaluasi() {
+
+            const p = document.getElementById("p").value;
+            const q = document.getElementById("q").value;
+
+            const hasil = document.getElementById("hasil");
+            const status = document.getElementById("status");
+            const penjelasan = document.getElementById("penjelasan");
+
+            if (p === "" || q === "") {
+
+                alert("Silakan pilih nilai P dan Q terlebih dahulu.");
+
+                return;
+            }
+
+            const nilaiP = p === "true";
+            const nilaiQ = q === "true";
+
+            // P → Q hanya salah ketika P benar dan Q salah
+            const implikasi = !nilaiP || nilaiQ;
+
+            hasil.style.display = "block";
+
+            if (implikasi) {
+
+                hasil.className = "hasil-benar";
+
+                status.innerHTML = "✅ IMPLIKASI BENAR";
+
+                penjelasan.innerHTML =
+                    "Pernyataan P → Q bernilai BENAR berdasarkan nilai P dan Q yang dipilih.";
+
+            } else {
+
+                hasil.className = "hasil-salah";
+
+                status.innerHTML = "❌ IMPLIKASI SALAH";
+
+                penjelasan.innerHTML =
+                    "Implikasi bernilai SALAH karena P bernilai BENAR sedangkan Q bernilai SALAH.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
